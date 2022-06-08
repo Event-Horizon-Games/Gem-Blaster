@@ -9,6 +9,7 @@ public class Gem : MonoBehaviour
     private bool isSelected;
     private static Gem previousSelected = null;
     private SpriteRenderer spriteRenderer;
+    public AudioClip selectSound, swapSound, clearSound;
 
     void Start()
     {
@@ -21,6 +22,7 @@ public class Gem : MonoBehaviour
         isSelected = true;
         spriteRenderer.color = SELECTED_COLOR;
         previousSelected = gameObject.GetComponent<Gem>();
+        GetComponent<AudioSource>().PlayOneShot(selectSound);
     }
 
     private void Unselect()
@@ -28,37 +30,6 @@ public class Gem : MonoBehaviour
         isSelected = false;
         spriteRenderer.color = UNSELECTED_COLOR;
         previousSelected = null;
-    }
-
-    private bool IsSelectedGemAdjacent()
-    {
-        Vector2[] adjacentDirections = new Vector2[] {
-            Vector2.up, Vector2.down, Vector2.left, Vector2.right
-        };
-
-        List<GameObject> adjacentGems = new List<GameObject>();
-
-        for (int i = 0; i < adjacentDirections.Length; i++)
-        {
-            RaycastHit2D collidedObject = Physics2D.Raycast(transform.position, adjacentDirections[i]);
-            if (collidedObject.collider != null)
-            {
-                adjacentGems.Add(collidedObject.collider.gameObject);
-            }
-        }
-
-        if (adjacentGems.Contains(previousSelected.gameObject))
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public void SwapGem()
-    {
-        Sprite tempSprite = previousSelected.spriteRenderer.sprite;
-        previousSelected.spriteRenderer.sprite = spriteRenderer.sprite;
-        spriteRenderer.sprite = tempSprite;
     }
 
     private void OnMouseDown()
@@ -93,6 +64,37 @@ public class Gem : MonoBehaviour
                 }
             }
         }
+    }
+    private bool IsSelectedGemAdjacent()
+    {
+        Vector2[] adjacentDirections = new Vector2[] {
+                Vector2.up, Vector2.down, Vector2.left, Vector2.right
+            };
+
+        List<GameObject> adjacentGems = new List<GameObject>();
+
+        for (int i = 0; i < adjacentDirections.Length; i++)
+        {
+            RaycastHit2D collidedObject = Physics2D.Raycast(transform.position, adjacentDirections[i]);
+            if (collidedObject.collider != null)
+            {
+                adjacentGems.Add(collidedObject.collider.gameObject);
+            }
+        }
+
+        if (adjacentGems.Contains(previousSelected.gameObject))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void SwapGem()
+    {
+        Sprite tempSprite = previousSelected.spriteRenderer.sprite;
+        previousSelected.spriteRenderer.sprite = spriteRenderer.sprite;
+        spriteRenderer.sprite = tempSprite;
+        GetComponent<AudioSource>().PlayOneShot(swapSound);
     }
 
     private List<GameObject> FindHorizontalMatches()
@@ -137,7 +139,7 @@ public class Gem : MonoBehaviour
         return matchingGems;
     }
 
-    private void ClearMatches()
+    public void ClearMatches()
     {
         if (spriteRenderer.sprite == null)
         {
@@ -168,6 +170,7 @@ public class Gem : MonoBehaviour
         if (horizontalMatches.Count >= 2 || verticalMatches.Count >= 2)
         {
             GameScript.instance.DropGems();
+            GetComponent<AudioSource>().PlayOneShot(clearSound);
         }
     }
 }

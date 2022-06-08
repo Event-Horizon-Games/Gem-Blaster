@@ -1,18 +1,17 @@
-using UnityEngine;
 using System.Collections.Generic;
-//https://learntodroid.com/how-to-make-a-simple-2d-android-game-with-unity/
+using UnityEngine;
 
 public class GameScript : MonoBehaviour
 {
-    [SerializeField] public static GameScript instance;
+    public static GameScript instance;
 
-    [SerializeField] private int rows, columns;
+    public int rows, columns;
     private GameObject[,] gems;
 
-    [SerializeField] private List<Sprite> gemSprites = new List<Sprite>();
-    [SerializeField] private GameObject gem;
+    public List<Sprite> gemSprites = new List<Sprite>();
 
-    // Start is called before the first frame update
+    public GameObject gem;
+
     void Start()
     {
         instance = GetComponent<GameScript>();
@@ -40,7 +39,17 @@ public class GameScript : MonoBehaviour
                 gems[x, y] = newGem;
 
                 newGem.transform.parent = transform;
-                newGem.GetComponent<SpriteRenderer>().sprite = gemSprites[Random.Range(0, gemSprites.Count)];
+
+                List<Sprite> invalidSprites = new List<Sprite>();
+                if (x > 0)
+                {
+                    invalidSprites.Add(gems[x - 1, y].GetComponent<SpriteRenderer>().sprite);
+                }
+                if (y > 0)
+                {
+                    invalidSprites.Add(gems[x, y - 1].GetComponent<SpriteRenderer>().sprite);
+                }
+                newGem.GetComponent<SpriteRenderer>().sprite = RandomSpriteExcluding(invalidSprites);
             }
         }
     }
@@ -55,7 +64,6 @@ public class GameScript : MonoBehaviour
                 possibleSprites.Add(gemSprites[i]);
             }
         }
-
         return possibleSprites[Random.Range(0, possibleSprites.Count)];
     }
 
