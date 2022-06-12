@@ -34,7 +34,7 @@ public class Gem : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (spriteRenderer.sprite == null)
+        if (spriteRenderer.sprite == null || GameManager.instance.gameOver)
         {
             return;
         }
@@ -65,6 +65,7 @@ public class Gem : MonoBehaviour
             }
         }
     }
+
     private bool IsSelectedGemAdjacent()
     {
         Vector2[] adjacentDirections = new Vector2[] {
@@ -170,6 +171,7 @@ public class Gem : MonoBehaviour
         if (horizontalMatches.Count >= 2 || verticalMatches.Count >= 2)
         {
             GameScript.instance.DropGems();
+            GameManager.instance.IncreaseScore();
             GetComponent<AudioSource>().PlayOneShot(clearSound);
         }
     }
