@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
         time = 45;
         gameOver = false;
-        UpdateTime();
+        StartTimer();
     }
 
     void Update()
