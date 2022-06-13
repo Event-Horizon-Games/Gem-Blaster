@@ -1771,12 +1771,12 @@ MonoBehaviour:
   rows: 8
   columns: 8
   gemSprites:
-  - {fileID: 21300000, guid: f95a05d14a31dea4ab785e3632f42f0d, type: 3}
-  - {fileID: 21300000, guid: 29958061de25e8c45abc90cf11011578, type: 3}
-  - {fileID: 21300000, guid: 25572a0d9f615c34da67666bd49618a7, type: 3}
-  - {fileID: 21300000, guid: 942bc75542e020c4b9466c8cf33231fe, type: 3}
   - {fileID: 21300000, guid: 7da921f59710ef94ebc27112adcade8c, type: 3}
-  - {fileID: 21300000, guid: e20b6ce80315a7b41a2d11f002cffcca, type: 3}
+  - {fileID: 21300000, guid: 9042c55304a6b5a41a61fd7bdf980c93, type: 3}
+  - {fileID: 21300000, guid: 442113edf9bb66b4e92e644045b3384e, type: 3}
+  - {fileID: 21300000, guid: 8dfbdd64ba0cef748af20309488e9f9a, type: 3}
+  - {fileID: 21300000, guid: 2464c6cd480640646a5d93d36373db67, type: 3}
+  - {fileID: 21300000, guid: 8afc4e037c2411c48b2cf8f0f5e20cec, type: 3}
   gem: {fileID: 904076371203018952, guid: 8c697c2a56522f344855f902fbe0fb3d, type: 3}
 --- !u!4 &2082105730
 Transform:
