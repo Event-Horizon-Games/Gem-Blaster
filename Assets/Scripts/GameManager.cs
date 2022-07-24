@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         score = 0;
         scoreText.text = "Score: " + score;
         highScore = PlayerPrefs.GetInt("HighScore");
-        highScoreText.text = "Score: " + highScore;
+        highScoreText.text = "High Score: " + highScore;
 
         time = 45;
         gameOver = false;
