@@ -1,4 +1,4 @@
-![Discord](https://img.shields.io/discord/443469615780200460?color=purple&label=Discord&logo=discord&style=plastic) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/Event-Horizon-Games/Gem-Blaster?style=plastic) ![GitHub all releases](https://img.shields.io/github/downloads/Event-Horizon-Games/Gem-Blaster/total?style=plastic)
+![Discord](https://img.shields.io/discord/443469615780200460?color=purple&label=Discord&logo=discord&style=plastic) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/Event-Horizon-Games/Gem-Blaster?style=plastic) ![GitHub all releases](https://img.shields.io/github/downloads/event-Horizon-Games/Gem-Blaster/total)
 # Gem Blaster
 Ton of credit to [this](https://learntodroid.com/how-to-make-a-simple-2d-android-game-with-unity/) guide. Basically just followed that and then adjusted to make my own
 
